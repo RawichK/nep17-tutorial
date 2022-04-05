@@ -19,9 +19,6 @@ namespace NEP17.Examples
     [ContractPermission("*", "onNEP17Payment")]
     public partial class NEP17 : Nep17Token
     {
-        // Owner address, must be the same as wallet that will be used to deploy.
-        [InitialValue("NM4qCMkFYFKFQeNBwDaBzTAxNS8xchyFnm", ContractParameterType.Hash160)]
-        private static readonly UInt160 owner;
         // Prefix is use as a StorageMap Key, we could have different prefix for different purpose.
         private const byte Prefix_Contract = 0x02;
         private static readonly StorageMap ContractMap = new StorageMap(Storage.CurrentContext, Prefix_Contract);
@@ -62,10 +59,12 @@ namespace NEP17.Examples
         {
             // Contract will do nothing if updating
             if (update) return;
+            // Get transaxtion data from Runtime, then get deploy wallet address with tx.Sender
+            var tx = (Transaction)Runtime.ScriptContainer;
             // Save initial owner when first time deploy
-            ContractMap.Put(ownerKey, owner);
+            ContractMap.Put(ownerKey, tx.Sender);
             // Mint all supply to the owner address at once when contract deployed.
-            Nep17Token.Mint(owner, InitialSupply);
+            Nep17Token.Mint(tx.Sender, InitialSupply);
         }
 
         // This method is necessary for contract to be able to update
