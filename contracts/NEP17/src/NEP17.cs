@@ -14,6 +14,8 @@ namespace NEP17.Examples
     [ManifestExtra("Email", "Nep17@tutorial.org")]
     [ManifestExtra("Description", "This is a NEP17 example")]
     [SupportedStandards("NEP-17")]
+    // ContractPermission attribute declare that this contract will invoke which contracts and which methods.
+    // In this case, it may invoke all contracts but only onNEP17Payment method.
     [ContractPermission("*", "onNEP17Payment")]
     public partial class NEP17 : Nep17Token
     {
