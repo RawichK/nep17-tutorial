@@ -1,0 +1,6 @@
+privatenet.neo-express
+wallets/
+checkpoints/
+invoke-files/
+**/src/bin/
+**/src/obj/
