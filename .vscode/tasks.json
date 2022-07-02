@@ -3,7 +3,7 @@
   "tasks": [
     {
       "options": {
-        "cwd": "${workspaceFolder}/contracts/NEP17"
+        "cwd": "${workspaceFolder}/contracts/NEP17/src"
       },
       "label": "NEP17: restore-tools",
       "command": "dotnet",
@@ -16,7 +16,7 @@
     },
     {
       "options": {
-        "cwd": "${workspaceFolder}/contracts/NEP17"
+        "cwd": "${workspaceFolder}/contracts/NEP17/src"
       },
       "label": "NEP17: build",
       "command": "dotnet",
