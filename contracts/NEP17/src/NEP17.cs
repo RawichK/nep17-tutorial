@@ -41,7 +41,7 @@ namespace NEP17.Examples
     #region THIS SECTION FOR write methods that users can invoke
     // Please note that there is no Transfer method explicitly declare here.
     // Because we use method as is that inherited from Nep17Token class.
-    public static
+    public static new
      void Burn(UInt160 account, BigInteger amount)
     {
       if (!IsOwner()) ExecutionEngine.Assert(false, "No Authorization for Burn!");
